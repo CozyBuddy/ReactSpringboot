@@ -23,8 +23,8 @@ public class TodoRepositoryTests {
 
     @Test
     public void testInsert() {
-      for (int i = 1; i <= 100; i++) {
-          Todo todo = Todo.builder().title("Title..." + i ).dueDate(LocalDate.of(2023, 12, 31)).writer("user00").build();
+      for (int i = 110; i <= 111; i++) {
+          Todo todo = Todo.builder().title("Title..." + i ).writer("user00").build();
 
           todoRepository.save(todo);
       }
@@ -33,7 +33,7 @@ public class TodoRepositoryTests {
     @Test
     public void testRead(){
         //존재하는 번호로 확인
-        Long tno = 33L;
+        Long tno = 107l;
 
         Optional<Todo> result = todoRepository.findById(tno);
 

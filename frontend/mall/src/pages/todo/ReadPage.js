@@ -1,5 +1,6 @@
 import { useCallback } from "react"
 import { createSearchParams, useNavigate, useParams, useSearchParams } from "react-router-dom"
+import ReadComponent from './../../components/todo/ReadComponent';
 const ReadPage = () => {
     const {tno} = useParams()
 
@@ -18,12 +19,10 @@ const ReadPage = () => {
         navigate({pathname :`/todo/list`,search:queryStr})
     },[page,size])
     return(
-        <div className="text-3xl font-extrabold">
+        <div className="text-2xl w-full">
             Todo Read Page Component {tno}
             <div>
-            <button onClick={() => movetoModify(33)}>Test Modify</button>
-            <button onClick={() => movetoList()}>Test List</button>
-
+            <ReadComponent tno={tno}></ReadComponent>   
             </div>
         </div>
     )
