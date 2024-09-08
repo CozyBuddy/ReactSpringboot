@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import todoRouter from "./todoRouter";
 
 
 
@@ -24,12 +25,7 @@ const root = createBrowserRouter([
   {
     path: "todo",
     element : <Suspense fallback={Loading}><TodoIndex></TodoIndex></Suspense>,
-    children : [
-        {
-            path : "list" ,
-            element : <Suspense fallback={Loading}><TodoList></TodoList></Suspense>
-        }
-    ]
+    children : todoRouter()
   }
   // 리액트는 router 방식의 spa 방식으로 동작하기 때문에 a태그는 쓰지 않도록함 대신 Link 태그 활용
 ])
