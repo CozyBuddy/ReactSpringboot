@@ -77,6 +77,7 @@ public class ProductController {
 
         Long pno = productService.register(productDTO);
         
+         
         return Map.of("result" , pno);
     }
     
