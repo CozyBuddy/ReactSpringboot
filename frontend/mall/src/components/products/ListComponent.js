@@ -3,6 +3,7 @@ import useCustomMove from "../../hooks/useCustomMove"
 import FetchingModal from './../common/FetchingModal';
 import { API_SERVER_HOST } from "../../api/todoApi";
 import { getList } from "../../api/productApi";
+import PageComponent from './../common/PageComponent';
 const host = API_SERVER_HOST
 const initState = {
 
@@ -68,6 +69,7 @@ const ListComponent = (() => {
         )}
 
             </div>
+            <PageComponent serverData={serverData} movePage={moveToList}></PageComponent>
         </div>
     )
 
