@@ -36,6 +36,7 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.modelmapper:modelmapper:3.1.1'
 	implementation 'net.coobird:thumbnailator:0.4.20'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 tasks.named('test') {

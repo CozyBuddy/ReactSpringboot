@@ -14,11 +14,11 @@ public class CustomServletConfig implements WebMvcConfigurer{
         registry.addFormatter(new LocalDateFormatter());
     }
 
-    public void addCorsMappings(CorsRegistry registry){
-        registry.addMapping("/**")
-        .allowedOrigins("*")
-        .allowedMethods("HEAD","GET" ,"POST" ,"PUT" , "DELETE" ,"OPTIONS")
-        .maxAge(300)
-        .allowedHeaders("Authorization" , "Cache-Control" , "Content-type");
-    }
+    // public void addCorsMappings(CorsRegistry registry){
+    //     registry.addMapping("/**")
+    //     .allowedOrigins("*")
+    //     .allowedMethods("HEAD","GET" ,"POST" ,"PUT" , "DELETE" ,"OPTIONS")
+    //     .maxAge(300)
+    //     .allowedHeaders("Authorization" , "Cache-Control" , "Content-type");
+    // }
 }
