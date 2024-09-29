@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import todoRouter from "./todoRouter";
 import productsRouter from "./productsRouter";
+import memberRouter from "./memberRouter";
 
 
 
@@ -11,6 +12,7 @@ const About = lazy(() => import("../pages/AboutPage"))
 const TodoIndex = lazy(() => import("../pages/todo/IndexPage"))
 const TodoList = lazy(() => import("../pages/todo/ListPage"))
 const ProductsIndex = lazy(() => import("../pages/products/IndexPage"))
+
 const root = createBrowserRouter([
     // suspense 와 lazy 를 활용하는 이유는 해당 컴포넌트가 필요한 순간전에는 로딩되지 않도록 하는 방식임.
     // 당장의 사용자가 필요로 할때만 해당 컴포넌트를 호출하는 방식인듯 (코드 분할)
@@ -34,6 +36,10 @@ const root = createBrowserRouter([
     path: "products",
     element : <Suspense fallback={Loading}><ProductsIndex></ProductsIndex></Suspense>,
     children : productsRouter()
+  },
+  {
+    path : "member" ,
+    children : memberRouter()
   }
   // 리액트는 router 방식의 spa 방식으로 동작하기 때문에 a태그는 쓰지 않도록함 대신 Link 태그 활용
 ])
