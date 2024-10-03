@@ -24,9 +24,10 @@ const loginSlice = createSlice({
         login: (state,action) => {
             console.log("login....");
 
-            const data = action.payload
+            const payload = action.payload
 
-            return {email : data.email}
+            setCookie("member" ,JSON.stringify(payload) ,1) 
+            return payload
         },
         logout : (state, action) => {
             console.log("logout...");
