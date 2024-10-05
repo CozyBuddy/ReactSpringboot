@@ -4,26 +4,17 @@ import { useEffect, useMemo } from "react";
 import { getCartItemsAsync } from "../../slices/cartSlice";
 import useCustomCart from "../../hooks/useCustomCart";
 import CartItemComponent from "../cart/CartItemComponent";
+import { useRecoilValue } from "recoil";
+import { cartTotalState } from "../../atoms/cartState";
 
 
 const CartComponent = () => {
     const {isLogin , loginState} = useCustomLogin() ;
 
-    const {refreshCart , cartItems , changeCart} = useCustomCart()
+    const {cartItems , changeCart} = useCustomCart()
    
-    const total = useMemo(() => {
-        let total = 0 
-        for(const item of cartItems) {
-            total += item.price * item.qty
-        }
-        return total ;
-    },[cartItems])
+    const totalValue = useRecoilValue(cartTotalState)
 
-    useEffect(() => {
-        if(isLogin) {
-           refreshCart()
-        }
-    },[isLogin])
 
     return (
         <div className="w-full">
@@ -48,7 +39,7 @@ const CartComponent = () => {
         <div>
 
             <div className="text-2xl text-right font-extrabold">
-                TOTAL : {total}
+                TOTAL : {totalValue}
             </div>
         </div>
         </div>

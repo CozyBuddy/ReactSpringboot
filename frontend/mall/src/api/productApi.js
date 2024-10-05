@@ -5,6 +5,7 @@ import jwtAxios from "../util/jwtUtil"
 const host = `${API_SERVER_HOST}/api/products`
 
 export const postAdd = async (product) => {
+    console.log("여긴 왔냐?")
     const header = {headers: {"Content-Type" : "multipart/form-data"}}
 
     const res = await jwtAxios.post(`${host}/` , product, header)
