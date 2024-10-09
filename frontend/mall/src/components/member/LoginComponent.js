@@ -22,8 +22,6 @@ const LoginComponent = () => {
     }
 
     const handelClickLogin = (e) => {
-       // dispatch(login(loginParam))
-       //dispatch(loginPostAsync(loginParam))
        doLogin(loginParam)
        .then(data => {
         console.log("after unwrap")

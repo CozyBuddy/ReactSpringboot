@@ -11,7 +11,7 @@ const initState = {
 
 const loadMemberCookie = () => {
     const memberInfo = getCookie('member')
-
+    
     if( memberInfo && memberInfo.nickname) {
         memberInfo.nickname = decodeURIComponent(memberInfo.nickname)
     }

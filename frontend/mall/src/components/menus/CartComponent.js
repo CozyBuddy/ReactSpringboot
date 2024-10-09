@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+
 import useCustomLogin from "../../hooks/useCustomLogin";
 import { useEffect, useMemo } from "react";
 import { getCartItemsAsync } from "../../slices/cartSlice";

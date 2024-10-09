@@ -6,7 +6,7 @@ const BasicLayout = ({children}) => {
         <>
         <BasicMenu></BasicMenu>
 
-        <div className="bg-white my-5 w-full flex flex-col space-y-1 md:flex-row md:space-x-1 md:space-y-0">
+        <div className="bg-white my-5 w-full flex flex-col space-y-1 md:flex-row md:space-x-1 md:space-y-0 overflow-auto">
         <main className="bg-sky-300 md:w-2/3 lg:w-3/4 px-5 py-5">
         {children}
         </main>
