@@ -1,7 +1,7 @@
 import axios from "axios"
 import jwtAxios from "../util/jwtUtil"
 
-export const API_SERVER_HOST = 'https://3.34.44.220' 
+export const API_SERVER_HOST = 'https://sunny93.shop' 
 
 const prefix = `${API_SERVER_HOST}/api/todo`
 
