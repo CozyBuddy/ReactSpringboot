@@ -12,7 +12,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
    <RouterProvider router={root}></RouterProvider> 
-   <ReactQueryDevtools initialIsOpen={true}/>
    </QueryClientProvider>
   );
 }

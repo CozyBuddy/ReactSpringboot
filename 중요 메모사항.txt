@@ -1,0 +1,13 @@
+배포할때 중요사항 // 
+
+스프링부트랑 리액트 둘다 개별적으로 같은 ssl 인증서로 스프링부트는 pem 혹은 pfx 로 별도 설정 통해서 적용하고 
+( application.properties 에 
+
+server.port=443
+server.ssl.key-store=classpath:sunny93.shop.pfx
+server.ssl.key-store-password=111111
+server.ssl.keyStoreType=PKCS12
+server.ssl.keyAlias=sunny93.shop
+
+)
+리액트는 http-server build -S -C certificate.crt -K private.key -p 443  // 이런 명령어로 실행할때 실행해서 실행시키면 됨.
