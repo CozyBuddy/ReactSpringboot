@@ -10,4 +10,7 @@ server.ssl.keyStoreType=PKCS12
 server.ssl.keyAlias=sunny93.shop
 
 )
-리액트는 http-server build -S -C certificate.crt -K private.key -p 443  // 이런 명령어로 실행할때 실행해서 실행시키면 됨.
+리액트는
+npm install ( module 설치)
+npm run build
+ http-server build -S -C certificate.crt -K private.key -p 443  // 이런 명령어로 실행할때 실행해서 실행시키면 됨.
