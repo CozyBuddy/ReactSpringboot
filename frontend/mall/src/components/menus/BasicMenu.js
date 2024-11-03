@@ -9,18 +9,18 @@ const BasicMenu = () => {
             <div className="w-4/5 bg-gray-500">
             <ul className="flex p-4 text-white font-bold">
                 <li className="pr-6 text-2xl">
-                    <Link to={"/"}>Main</Link> 
+                    <Link to={"/"}>메인</Link> 
                 </li>
                 <li className="pr-6 text-2xl">
-                    <Link to={"/about"}>About</Link> 
+                    <Link to={"/about"}>기타</Link> 
                 </li>
                 {loginState.email ? <>
                 
                 <li className="pr-6 text-2xl">
-                    <Link to={"/todo/"}>Todo</Link> 
+                    <Link to={"/todo/"}>게시판</Link> 
                 </li>
                 <li className="pr-6 text-2xl">
-                    <Link to={"/products/"}>Products</Link> 
+                    <Link to={"/products/"}>상품</Link> 
                 </li>
                 </> : <></>}
             </ul>
@@ -29,11 +29,11 @@ const BasicMenu = () => {
             <div className="w-1/5 flex justify-end bg-orange-300 p-4 font-medium">
             {!loginState.email ? 
             <div className="text-white text-sm m-1 rounded">
-               <Link to={'/member/login'}>Login</Link>
+               <Link to={'/member/login'}>로그인</Link>
             </div>
                 :
              <div className="text-white text-sm m-1 rounded">
-                <Link to={'/member/logout'}>Logout</Link>
+                <Link to={'/member/logout'}>로그아웃</Link>
              </div>}
             </div>
         </nav>

@@ -53,7 +53,7 @@ const ReadComponent = ({pno}) => {
 
             <div className="flex justify-center mt-10">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">PNO</div>
+                    <div className="w-1/5 p-6 text-right font-bold">번호</div>
                     <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
                     {product.pno}
                     </div>
@@ -62,7 +62,7 @@ const ReadComponent = ({pno}) => {
 
             <div className="flex justify-center mt-10">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">PNAME</div>
+                    <div className="w-1/5 p-6 text-right font-bold">상품명</div>
                     <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
                     {product.pname}
                     </div>
@@ -71,7 +71,7 @@ const ReadComponent = ({pno}) => {
 
             <div className="flex justify-center mt-10">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">PRICE</div>
+                    <div className="w-1/5 p-6 text-right font-bold">가격</div>
                     <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
                     {product.price}
                     </div>
@@ -80,7 +80,7 @@ const ReadComponent = ({pno}) => {
 
             <div className="flex justify-center mt-10">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">PDESC</div>
+                    <div className="w-1/5 p-6 text-right font-bold">설명</div>
                     <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
                     {product.pdesc}
                     </div>
@@ -94,15 +94,15 @@ const ReadComponent = ({pno}) => {
             </div>
 
             <div className="flex justify-end p-4">
-                <button type="button" className="inline-block rounded p-4 m-2 text-xl w-32
-                 text-white bg-green-500" onClick={handleClickAddCart}>Add Cart</button>
+                <button type="button" className="inline-block rounded p-4 m-2 text-xl w-36
+                 text-white bg-green-500" onClick={handleClickAddCart}>장바구니추가</button>
                 <button type="button" className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
                 onClick={() => moveToModify(pno)}
-                >MODIFY</button>
+                >수정</button>
 
                 <button type="button" className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
                 onClick={moveToList}
-                >LIST</button>
+                >목록</button>
             </div>
 
             

@@ -49,7 +49,7 @@ const ListComponent = (() => {
 
     return ( 
         <div className="border-2 border-blue-100 mt-10 mr-2 ml-2">
-            <h1>Product List Component</h1>
+            <h1>상품 목록</h1>
 
             {isFetching ? <FetchingModal/> :<></>}
 

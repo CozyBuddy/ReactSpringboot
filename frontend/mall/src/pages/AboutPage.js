@@ -12,8 +12,8 @@ const AboutPage = () => {
      }
     return (
         <BasicLayout>
-        <Link to={"/"}>Main Page</Link>
-        <div className="text-3xl">About Page</div>
+        <Link to={"/"}>메인</Link>
+        <div className="text-3xl">기타</div>
         </BasicLayout>
     )
 }

@@ -33,11 +33,11 @@ const ReadComponent = ({tno}) => {
             <div className="flex justify-end p-4">
             <button type="button" className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500" 
             onClick={()=> moveToList()}>
-                List
+                목록
             </button>
                 <button type="button" className="rounded p-4 m-2 text-xl w-32 text-white bg-red-500" 
                 onClick={()=> moveToModify(tno)}> 
-                Modify
+                수정
                 </button>
             </div>
         </div>

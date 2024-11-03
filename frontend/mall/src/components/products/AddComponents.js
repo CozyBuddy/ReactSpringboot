@@ -64,7 +64,7 @@ const AddComponent = () => {
             callbackFn={closeModal}></ResultModal> : <></>}
             <div className="flex justify-center">
                <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                <div className="w-1/5 p-6 text-right font-bold">Product Name</div>
+                <div className="w-1/5 p-6 text-right font-bold">상품명</div>
                 <input type="text" className="w-4/5 p-6 rounded-r border border-solid border-neutral-300 shadow-md"
                 name="pname" 
                 value={product.pname} 
@@ -73,7 +73,7 @@ const AddComponent = () => {
             </div>
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Desc</div>
+                    <div className="w-1/5 p-6 text-right font-bold">설명</div>
                     <textarea className="w-4/5 p-6 rounded-r border border-solid border-neutral-300 shadow-md resize-y"
                      name="pdesc" 
                      rows="4"
@@ -84,7 +84,7 @@ const AddComponent = () => {
             </div>
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Price</div>
+                    <div className="w-1/5 p-6 text-right font-bold">가격</div>
                     <input className="w-4/5 p-6 rounded-r border border-solid border-neutral-300 shadow-md "
                      name="price" 
                      type={'number'}
@@ -95,7 +95,7 @@ const AddComponent = () => {
             </div>
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Files</div>
+                    <div className="w-1/5 p-6 text-right font-bold">파일</div>
                     <input className="w-4/5 p-6 rounded-r border border-solid border-neutral-300 shadow-md "
                      ref={uploadRef}
                      type="file"
@@ -107,7 +107,7 @@ const AddComponent = () => {
             <div className="flex justify-end">
                 <div className="relative mb-4 flex p-4 flex-wrap items-stretch">
                     <button type="button" className="rounded p-4 w-36 bg-blue-500 text-xl text-white"
-                    onClick={handleClickAdd}>ADD</button>
+                    onClick={handleClickAdd}>추가</button>
                 </div>
             </div>
         </div>

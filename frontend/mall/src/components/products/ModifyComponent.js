@@ -118,7 +118,7 @@ const ModifyComponent = ({pno}) => {
           : <></> }
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Product Name</div>
+                    <div className="w-1/5 p-6 text-right font-bold">상품명</div>
 
                     <input type="text" className="w-4/5 p-6 rounded-r border border-solid border-neutral-300
                     shadow-md" name="pname" value={product.pname} onChange={handleChangeProduct}/>
@@ -128,7 +128,7 @@ const ModifyComponent = ({pno}) => {
 
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Desc</div>
+                    <div className="w-1/5 p-6 text-right font-bold">설명</div>
                     <textarea name="pdesc" id="" className="w-4/5 p-6 rounded-r border border-solid border-neutral-300
                      shadow-md resize-y" rows="4" 
                      onChange={handleChangeProduct}
@@ -138,7 +138,7 @@ const ModifyComponent = ({pno}) => {
 
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Price</div>
+                    <div className="w-1/5 p-6 text-right font-bold">가격</div>
                     <input type="number" className="w-4/5 p-6 rounded-r border border-solid border-neutral-300
                     shadow-md" name="price" value={product.price} onChange={handleChangeProduct}/>
 
@@ -147,7 +147,7 @@ const ModifyComponent = ({pno}) => {
 
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">DELETE</div>
+                    <div className="w-1/5 p-6 text-right font-bold">삭제</div>
                     <select name="delFlag" id="" value={product.delFlag}
                     onChange={handleChangeProduct}
                     className="w-4/5 p-6 rounded-r border border-solid border-neutral-300
@@ -160,7 +160,7 @@ const ModifyComponent = ({pno}) => {
 
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Files</div>
+                    <div className="w-1/5 p-6 text-right font-bold">파일</div>
                     <input type="file" ref={uploadRef} className="w-4/5 p-6 rounded-r border 
                     border-solid border-neutral-300
                     " multiple={true} />
@@ -169,7 +169,7 @@ const ModifyComponent = ({pno}) => {
 
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Images</div>
+                    <div className="w-1/5 p-6 text-right font-bold">이미지</div>
                     <div className="w-4/5 justify-center flex flex-wrap items-start">
                     {product.uploadFileNames.map((imgFile, i) => 
                         <div className="flex justify-center flex-col w-1/3 m-1 align-baseline"
@@ -185,14 +185,14 @@ const ModifyComponent = ({pno}) => {
 
             <div className="flex justify-end p-4">
                 <button type="button" className="rounded p-4 m-2 text-xl w-32 text-white bg-red-500
-                " onClick={handleClickDelete}>Delete</button>
+                " onClick={handleClickDelete}>삭제</button>
 
                 <button type="button" className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-orange-500"
-                onClick={handleClickModify}>Modify</button>
+                onClick={handleClickModify}>수정</button>
 
                 <button type="button" className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
                 onClick={moveToList}>
-                    List
+                    목록
                 </button>
             </div>
 

@@ -5,10 +5,10 @@ const MainPage = () => {
     return (
         <BasicLayout>
             <div className="flex underline">
-            <Link to={'/about'}>about</Link>
+            <Link to={'/about'}>기타</Link>
             </div>
         <div className="text-3xl">
-            <div>MainPage</div>
+            <div>메인</div>
         </div>
         
        

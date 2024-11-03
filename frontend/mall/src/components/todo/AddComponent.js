@@ -40,7 +40,7 @@ const AddComponent = () => {
             {result ? <ResultModal title={`Add Result`} content={`New ${result} Added`} callbackFn={closeModal}></ResultModal> : <></>}
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">Title</div>
+                    <div className="w-1/5 p-6 text-right font-bold">제목</div>
                     <input type="text" className="w-4/5 p-6 rounded-r border border-solid border-neutral-500 shadow-md"
                      name="title" value={todo.title} onChange={handleChangeTodo}
                      />
@@ -48,7 +48,7 @@ const AddComponent = () => {
             </div>
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">WRITER</div>
+                    <div className="w-1/5 p-6 text-right font-bold">작성자</div>
                     <input type="text" className="w-4/5 p-6 rounded-r border border-solid border-neutral-500 shadow-md"
                     name="writer" value={todo.writer} onChange={handleChangeTodo}
                      />
@@ -56,7 +56,7 @@ const AddComponent = () => {
             </div>
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                    <div className="w-1/5 p-6 text-right font-bold">dueDate</div>
+                    <div className="w-1/5 p-6 text-right font-bold">날짜</div>
                     <input type="date" className="w-4/5 p-6 rounded-r border border-solid border-neutral-500
                     shadow-md" name="dueDate" value={todo.dueDate} onChange={handleChangeTodo}/>
                 </div>
@@ -64,7 +64,7 @@ const AddComponent = () => {
             <div className="flex justify-center">
                 <div className="relative mb-4 flex p-4 flex-wrap items-stretch">
                     <button type="button" className="rounded p-4 w-36 bg-blue-500 text-xl text-white"
-                    onClick={handleClickAdd} >ADD</button>
+                    onClick={handleClickAdd} >추가</button>
                 </div>
             </div>
 

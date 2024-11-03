@@ -31,7 +31,7 @@ const KakaoRedirectPage = () => {
     },[authCode])
     return(
         <div>
-            <div>Kakao Login Redirect</div>
+            <div>카카오 리다이렉트</div>
             <div>{authCode}</div>
         </div>
     )

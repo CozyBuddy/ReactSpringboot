@@ -27,7 +27,7 @@ const ReadPage = () => {
     return(
         <div className="font-extrabold w-full bg-white mt-6">
         <div className="text-2xl">
-            Todo Read Page Component {tno}
+           게시글{tno}
             <div>
             <ReadComponent tno={tno}></ReadComponent>
             

@@ -22,7 +22,7 @@ const CartComponent = () => {
         <div className="flex flex-col">
         <div className="flex w-full">
         <div>
-            {loginState.nickname}'s Cart
+            {loginState.nickname}님의 장바구니
         </div>
         <div className="bg-orange-600 w-9 text-center text-white font-bold rounded-full m-2">
             {cartItems.length}
@@ -39,7 +39,7 @@ const CartComponent = () => {
         <div>
 
             <div className="text-2xl text-right font-extrabold">
-                TOTAL : {totalValue}
+                총금액 : {totalValue}
             </div>
         </div>
         </div>
