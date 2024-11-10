@@ -7,7 +7,7 @@ const ModifyPage = () => {
     return (
         <div className="p-4 w-full bg-whtie">
             <div className="text-3xl font-extrabold">
-                Products Modify Page
+               상품 수정
             </div>
 
             <ModifyComponent pno={pno}></ModifyComponent>

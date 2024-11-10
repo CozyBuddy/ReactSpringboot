@@ -21,3 +21,10 @@ export const modifyMember = async (member) => {
 
     return res.data ;
 }
+
+export const JoinMember = async (member) => {
+    console.log(member)
+    const res = await axios.post(`${host}/join`,member)
+    console.log(res)
+    return res.data ;
+}

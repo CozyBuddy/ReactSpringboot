@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Data
+
 public class MemberDTO extends User{
 
     private String email ; 
@@ -32,14 +33,14 @@ public class MemberDTO extends User{
     private List<String> roleNames = new ArrayList<>();
 
     public MemberDTO(String email , String pw , String nickname , boolean social , List<String> roleNames){
-        super(email, pw, roleNames.stream().map( str -> new SimpleGrantedAuthority("ROLE_" + str))
+        super(email, pw, roleNames == null? List.of(new SimpleGrantedAuthority("ROLE_USER")) : roleNames.stream().map( str -> new SimpleGrantedAuthority("ROLE_" + str))
         .collect(Collectors.toList())) ;
 
         this.email = email;
         this.pw = pw ;
         this.nickname = nickname;
         this.social = social;
-        this.roleNames = roleNames ;
+        this.roleNames =  roleNames ;
     }
     
     public Map<String, Object> getClaims() {

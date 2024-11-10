@@ -7,10 +7,12 @@ import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
@@ -18,6 +20,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @ToString(exclude ="memberRoleList")
 public class Member {
     @Id
@@ -28,6 +31,8 @@ public class Member {
     private String nickname;
 
     private boolean social;
+
+    private List<String> memberRoles;
 
     @ElementCollection (fetch = FetchType.LAZY)
     @Builder.Default
@@ -51,4 +56,6 @@ public class Member {
     public void changeSocial(boolean social) {
         this.social = social;
     }
+
+   
 }

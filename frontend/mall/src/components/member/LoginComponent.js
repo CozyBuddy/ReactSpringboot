@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { Navigate, useNavigate } from "react-router-dom"
 import useCustomLogin from "../../hooks/useCustomLogin"
 import KakaoLoginComponent from './KakaoLoginComponent';
+import { JoinMember } from './../../api/memberApi';
 
 const initState = {
     email: '' ,
@@ -34,6 +35,9 @@ const LoginComponent = () => {
         }
        })
     }
+    const handelClickJoin = () => {
+       moveToPath('/member/Join')
+    }
 
     return ( 
         <div className="border-2 border-sky-200 mt-10 m-2 p-4 overflow-y-auto">
@@ -58,9 +62,12 @@ const LoginComponent = () => {
             </div>
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full justify-center">
-                    <div className="w-2/5 p-6 flex justify-center font-bold">
-                    <button className="rounded p-4 w-36 bg-blue-500 text-xl text-white" onClick={handelClickLogin}>
+                    <div className="w-full p-6 flex justify-center font-bold space-x-3">
+                    <button className="rounded p-4 w-full bg-blue-500 text-xl text-white" onClick={handelClickLogin}>
                         로그인
+                    </button>
+                    <button className="rounded p-4 w-full bg-violet-400 text-xl text-white" onClick={handelClickJoin}>
+                        회원가입
                     </button>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 package com.zerock.mallapi.service;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.action.internal.EntityActionVetoException;
@@ -120,6 +121,18 @@ public class MemberServiceImpl implements MemberService{
         member.changeNickname(memberModifyDTO.getNickname());
 
         memberRepository.save(member);
+    }
+
+    @Override
+    public void joinMember(MemberDTO memberDTO) {
+        Member member = new Member();
+        member.setEmail(memberDTO.getEmail());
+        member.setPw(passwordEncoder.encode(memberDTO.getPw()));
+        member.setNickname(memberDTO.getNickname());
+        member.setSocial(false);
+        member.addRole(MemberRole.USER);
+        memberRepository.save(member);
+        
     }
 
     

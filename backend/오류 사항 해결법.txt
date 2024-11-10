@@ -1,0 +1,1 @@
+1. spring boot properties 디버깅 오류 => 확장팩 사용 안함 했다가 사용하면 풀림

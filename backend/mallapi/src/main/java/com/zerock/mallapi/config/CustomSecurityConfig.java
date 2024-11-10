@@ -39,13 +39,19 @@ public class CustomSecurityConfig {
             http.sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
             http.csrf(config -> config.disable());
-
+            http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/member/join").permitAll());
+         
             http.formLogin(config -> {
                 config.loginPage("/api/member/login");
+                // 자동으로 customuserdetailservice로 와서 로그인 검증
                 config.successHandler(new APILoginSuccessHandler());
                 config.failureHandler(new APILoginFailHandler());
-            });
 
+            });
+           
+            //formLogin 이 호출되면 usernamepasswordauthenticationfilter가 호출되고 그 후에 다시 CustomUserDetailsService 의 
+            //loadUserByUsername 이 호출되서 그 안에서 갖고 있는 정보를 토대로 DaoAuthenticationProvider에서 자동으로 비밀번호도 검증해줌 
+            // 모든 요청에서 SecurityFilterChain  거침
             http.addFilterBefore(new JWTCheckFilter(), UsernamePasswordAuthenticationFilter.class) ;
             http.exceptionHandling(config -> {
                 config.accessDeniedHandler(new CustomAccessDeniedHandler());

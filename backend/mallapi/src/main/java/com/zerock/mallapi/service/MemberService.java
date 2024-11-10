@@ -18,4 +18,6 @@ public interface MemberService {
         
         return dto ;
     }
+
+    void joinMember(MemberDTO memberDTO) ;
 }
