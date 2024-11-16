@@ -14,6 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
 public class CustomAccessDeniedHandler implements AccessDeniedHandler{
 
     @Override
@@ -24,6 +25,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler{
       String jsonStr = gson.toJson(Map.of("error" , "ERROR_ACCESSDENIED"));
 
       response.setContentType("application/json");
+      System.out.print("여기왓냐?");
       response.setStatus(HttpStatus.FORBIDDEN.value());
       PrintWriter printWriter = response.getWriter() ;
       printWriter.println(jsonStr);

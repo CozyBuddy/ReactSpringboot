@@ -39,8 +39,9 @@ public class CustomSecurityConfig {
             http.sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
             http.csrf(config -> config.disable());
-            http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/member/join").permitAll());
-         
+            http.authorizeHttpRequests(auth -> 
+            auth.anyRequest().permitAll() // 모든 요청에 대해 인증 없이 접근 가능
+        );
             http.formLogin(config -> {
                 config.loginPage("/api/member/login");
                 // 자동으로 customuserdetailservice로 와서 로그인 검증

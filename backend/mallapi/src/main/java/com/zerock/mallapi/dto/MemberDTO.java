@@ -33,7 +33,7 @@ public class MemberDTO extends User{
     private List<String> roleNames = new ArrayList<>();
 
     public MemberDTO(String email , String pw , String nickname , boolean social , List<String> roleNames){
-        super(email, pw, roleNames == null? List.of(new SimpleGrantedAuthority("ROLE_USER")) : roleNames.stream().map( str -> new SimpleGrantedAuthority("ROLE_" + str))
+        super(email, pw,  roleNames == null ?  List.of(new SimpleGrantedAuthority("ROLE_USER")): roleNames.stream().map( str -> new SimpleGrantedAuthority("ROLE_" + str))
         .collect(Collectors.toList())) ;
 
         this.email = email;

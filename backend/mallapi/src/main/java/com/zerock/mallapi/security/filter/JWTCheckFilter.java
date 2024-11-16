@@ -36,6 +36,10 @@ public class JWTCheckFilter extends OncePerRequestFilter{
          
             return true ;
         }
+        if (path.startsWith("/api/email/")) {
+         
+          return true ;
+      }
      
         if(path.startsWith("/api/products/view/")){
             return true ;
@@ -50,7 +54,7 @@ public class JWTCheckFilter extends OncePerRequestFilter{
       log.info("---------------JWTCheckFilter-------------------");
 
       String authHeaderStr = request.getHeader("Authorization");
-
+    
       try {
         String accessToken = authHeaderStr.substring(7);
         Map<String,Object> claims = JWTUtil.validateToken(accessToken);
