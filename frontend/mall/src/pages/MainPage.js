@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import BasicLayout from "../layouts/BasicLayout";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { sendmail } from './../api/sendMail';
 
 const MainPage = () => {
@@ -9,13 +9,19 @@ const MainPage = () => {
     };
     
     const [email, setEmail] = useState({ ...emailData });
+    const [isvalid, setValid] = useState(false);
     const insertemail = (e) => {
         setEmail({ ...email, email: e.target.value });
+        const value = e.target.value;
+        const regex =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setValid(regex.test(value))
     };
     // emailData가 변경될 때만 email을 업데이트
     
     const sendMail = async() => {
-      if ( validateEmail(email)){
+
+     
+      if (isvalid){
         const res = await sendmail(email);
         console.log(res)
         alert(res)
@@ -25,10 +31,7 @@ const MainPage = () => {
       
     };
 
-    const validateEmail = (email) => {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 이메일 정규식
-      return emailPattern.test(email);
-    };
+
     return (
         <BasicLayout>
               <div className="min-h-screen bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 text-white flex flex-col justify-center items-center p-6">
@@ -52,7 +55,6 @@ const MainPage = () => {
           <input
             type="email"
             id="email"
-            required
             onChange={insertemail}
             placeholder="이메일 입력"
             className="w-full p-3 border border-gray-300 rounded-lg mb-4 text-gray-800"
