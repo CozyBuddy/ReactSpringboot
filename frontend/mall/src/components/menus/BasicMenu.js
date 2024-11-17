@@ -6,7 +6,7 @@ const BasicMenu = () => {
     const {loginState} = useCustomLogin()
     return(
         <nav id='navbar' className="flex bg-blue-300">
-            <div className="w-4/5 bg-gray-500">
+            <div className="w-4/5 bg-green-700">
             <ul className="flex p-4 text-white font-bold">
                 <li className="pr-6 text-2xl">
                     <Link to={"/"}>메인</Link> 

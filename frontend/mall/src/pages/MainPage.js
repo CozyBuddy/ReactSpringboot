@@ -13,14 +13,21 @@ const MainPage = () => {
         setEmail({ ...email, email: e.target.value });
     };
     // emailData가 변경될 때만 email을 업데이트
-    useEffect(() => {
-        console.log(email);  // 상태 업데이트 후 콘솔에 찍기
-    }, [email]);  // email 값이 변경될 때마다 실행
-
+    
     const sendMail = async() => {
-       const res = await sendmail(email);
-       console.log(res)
-       alert(res)
+      if ( validateEmail(email)){
+        const res = await sendmail(email);
+        console.log(res)
+        alert(res)
+      } else {
+        alert("정확한 이메일 주소를 입력해주세요")
+      }
+      
+    };
+
+    const validateEmail = (email) => {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 이메일 정규식
+      return emailPattern.test(email);
     };
     return (
         <BasicLayout>
@@ -45,6 +52,7 @@ const MainPage = () => {
           <input
             type="email"
             id="email"
+            required
             onChange={insertemail}
             placeholder="이메일 입력"
             className="w-full p-3 border border-gray-300 rounded-lg mb-4 text-gray-800"
