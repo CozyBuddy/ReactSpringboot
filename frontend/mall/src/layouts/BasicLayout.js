@@ -3,11 +3,11 @@ import CartComponent from './../components/menus/CartComponent';
 
 const BasicLayout = ({children}) => {
     return (
-        <div className="overflow-auto">
+        <div className="h-full">
         <BasicMenu className="overflow-auto"></BasicMenu>
 
-        <div className="bg-white my-5 w-full flex flex-col space-y-1 md:flex-row md:space-x-1 md:space-y-0 overflow-auto">
-        <main className="bg-sky-300 md:w-full lg:w-full px-5 py-5 overflow-auto">
+        <div className="bg-white h-[90%] w-[100%] flex flex-col space-y-1 md:space-x-1 md:space-y-0 ">
+        <main className=" w-full h-full ">
         {children}
         </main>
 

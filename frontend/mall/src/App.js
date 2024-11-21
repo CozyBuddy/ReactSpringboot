@@ -10,8 +10,10 @@ const queryClient = new QueryClient()
 // 싱글 페이지 SPA
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-   <RouterProvider router={root}></RouterProvider> 
+    <QueryClientProvider client={queryClient} > 
+      <div className="h-full">
+   <RouterProvider router={root} className="h-full"></RouterProvider> 
+   </div>
    </QueryClientProvider>
   );
 }

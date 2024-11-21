@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import BasicLayout from "../layouts/BasicLayout";
 import { useEffect, useRef, useState } from "react";
 import { sendmail } from './../api/sendMail';
+import { useRecoilState } from "recoil";
+import signinState from "../atoms/signinState";
 
 const MainPage = () => {
     const emailData = {
@@ -10,6 +12,25 @@ const MainPage = () => {
     
     const [email, setEmail] = useState({ ...emailData });
     const [isvalid, setValid] = useState(false);
+    const [login , setlogin] = useState(false);
+    const [loginState, setLoginState] = useRecoilState(signinState);
+    const [messages, setMessages] = useState([]);
+    const [input, setInput] = useState("");
+
+    const handleSend = () => {
+      if (input.trim() === "") return;
+      setMessages([...messages, { text: input, sender: "user" }]);
+      setInput("");
+    };
+    useEffect(() => {
+      console.log(loginState)
+      console.log(loginState.email)
+      if(loginState.email == ''){
+        setlogin(false)
+      } else {
+        setlogin(true)
+      }
+    }, [loginState])
     const insertemail = (e) => {
         setEmail({ ...email, email: e.target.value });
         const value = e.target.value;
@@ -34,8 +55,9 @@ const MainPage = () => {
 
     return (
         <BasicLayout>
-              <div className="min-h-screen bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 text-white flex flex-col justify-center items-center p-6">
-      <div className="bg-white bg-opacity-80 p-10 rounded-lg shadow-xl w-full sm:w-96">
+              <div className=" text-white flex flex-col justify-center items-center  h-[100%]">
+     {login ==false ? (
+      <div className="bg-white bg-opacity-80 p-10 rounded-lg shadow-xl w-full sm:w-96" >
         <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
           🎶 인공지능으로 가수의 목소리로 노래를 부르다 🎤
         </h1>
@@ -68,7 +90,45 @@ const MainPage = () => {
           </button>
         </form>
       </div>
+ ) :  <div className="flex flex-col items-center justify-center bg-blue-50 w-full h-full">
+ <div className=" bg-white shadow-lg rounded-lg p-4 mt-10 ml-96 w-[60%] h-[90%]">
+   {/* Header */}
+   <div className="text-center font-bold text-lg text-blue-600 mb-4 h-96" >
+     AI와 채팅하기 💬
+   </div>
 
+   {/* Chat Messages */}
+   <div className="overflow-y-auto flex flex-col space-y-2 mb-4 w-auto h-auto">
+     {messages.map((msg, index) => (
+       <div
+         key={index}
+         className={`${
+           msg.sender === "user" ? "self-end bg-blue-200" : "self-start bg-gray-200"
+         } max-w-[70%] p-2 rounded-lg text-sm`}
+       >
+         {msg.text}
+       </div>
+     ))}
+   </div>
+
+   {/* Input Area */}
+   <div className="flex items-center space-x-2 mt-52">
+     <input
+       type="text"
+       className="flex-grow p-2 border border-gray-300 rounded-lg text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
+       placeholder="대화를 입력해보세요."
+       value={input}
+       onChange={(e) => setInput(e.target.value)}
+     />
+     <button
+       className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+       onClick={handleSend}
+     >
+       Send
+     </button>
+   </div>
+ </div>
+</div>  }
       {/* <div className="mt-12 text-center">
         <h2 className="text-2xl font-semibold mb-4">🎧 서비스 기능 미리보기</h2>
         <div className="flex justify-center space-x-8">
@@ -99,6 +159,7 @@ const MainPage = () => {
         </div>
       </div> */}
     </div>
+ 
         </BasicLayout>
     )
 }

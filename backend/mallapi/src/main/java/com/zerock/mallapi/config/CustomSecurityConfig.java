@@ -35,6 +35,7 @@ public class CustomSecurityConfig {
             http.cors(httpSecurityCorsConfigurer -> {
                 httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource());
             });
+              
 
             http.sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
