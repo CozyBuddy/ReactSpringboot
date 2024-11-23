@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import signinState from "../atoms/signinState";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getGeminiChat } from "../api/geminiApi";
+import loading from '../image/duckloading.gif'
 const MainPage = () => {
     const emailData = {
         email: '',
@@ -29,15 +30,19 @@ const MainPage = () => {
         { sender: 'user', text: prompt }
        ])
        setPrompt('')
+       setMessages((prevMessage) =>[
+        ...prevMessage ,
+        { sender: 'Gemini', text: <img src={loading} alt="" className="h-32 w-20 bg-white"/> }
+       ])
        const result = await getGeminiChat(prompt)
     
 
-      
-
        setMessages((prevMessage) =>[
-        ...prevMessage ,
+        ...prevMessage.slice(0, prevMessage.length - 1),
         { sender: 'Gemini', text: result }
        ])
+
+       
 
     };
     useEffect(() => {
