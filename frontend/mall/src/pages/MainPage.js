@@ -87,9 +87,9 @@ const MainPage = () => {
 
     return (
         <BasicLayout>
-              <div className=" text-white flex flex-col justify-center items-center  h-[100%]">
+              <div className=" text-white flex justify-center items-center  h-[100%]">
      {login ==false ? (
-      <div className="bg-white bg-opacity-80 p-10 rounded-lg shadow-2xl w-full sm:w-96" >
+      <div className="bg-white bg-opacity-80 mt-14 md:mt-0 p-10 rounded-lg shadow-2xl w-full sm:w-96" >
        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
           🎶 구글 Gemini 챗봇 대화하기 🎤
         </h1>
@@ -133,10 +133,14 @@ const MainPage = () => {
           </button>
         </form> */}
       </div>
- ) :  <div className="flex flex-col items-center justify-center bg-blue-50 w-full h-full">
- <div className="flex flex-col bg-white shadow-lg rounded-lg p-4 mt-2 ml-96 w-[70%] h-[100%]">
+ ) :  
+
+<div className="border-2 border-sky-200 mt-5 m-2 p-4 h-full w-full md:w-[80%] overflow-y-auto">
+<div className="flex justify-center h-full w-full md:w-[80%]">
+<div className="flex flex-col items-center justify-center bg-blue-50 w-full md:w-full h-full">
+ <div className="flex flex-col bg-white shadow-lg border border-gray-600 rounded-lg p-4 md:mt-2 ml-0 md:ml-96 h-full w-full md:w-[100%]">
    {/* Header */}
-   <div className="text-center font-bold text-lg text-blue-600 mb-4 h-auto" >
+   <div className="text-center font-bold text-lg text-blue-600 mb-0 h-[5%] w-full" >
      AI와 채팅하기 💬
    </div>
 
@@ -156,24 +160,27 @@ const MainPage = () => {
    </div>
 
    {/* Input Area */}
-   <div className="flex items-center space-x-2 mt-2 h-12">
+   <div className="flex items-center space-x-2 mt-2 w-[95%] h-12">
      <input
        type="text"
-       className="flex-grow p-2 border border-gray-300 rounded-lg text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
+       className="flex-grow p-2 border border-gray-300 rounded-lg text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-400 w-full "
        placeholder="대화를 입력해보세요."
        value={prompt}
        onInput={setText}
        onKeyDown={keyEnter}
      />
      <button
-       className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+       className="bg-blue-500 text-white md:text-xl text-xs md:px-3 w-auto px-1 py-2 rounded-lg hover:bg-blue-600"
        onClick={handleSend}
      >
        보내기
      </button>
    </div>
  </div>
-</div>  }
+
+</div> 
+</div>
+</div>}
       {/* <div className="mt-12 text-center">
         <h2 className="text-2xl font-semibold mb-4">🎧 서비스 기능 미리보기</h2>
         <div className="flex justify-center space-x-8">
