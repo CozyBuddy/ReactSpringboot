@@ -4,23 +4,41 @@ import { useEffect, useRef, useState } from "react";
 import { sendmail } from './../api/sendMail';
 import { useRecoilState } from "recoil";
 import signinState from "../atoms/signinState";
-
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getGeminiChat } from "../api/geminiApi";
 const MainPage = () => {
     const emailData = {
         email: '',
     };
-    
+    const [prompt , setPrompt] = useState('')
     const [email, setEmail] = useState({ ...emailData });
     const [isvalid, setValid] = useState(false);
     const [login , setlogin] = useState(false);
     const [loginState, setLoginState] = useRecoilState(signinState);
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
+    const messagesEndRef = useRef(null); // 메시지 끝에 대한 ref
 
-    const handleSend = () => {
-      if (input.trim() === "") return;
-      setMessages([...messages, { text: input, sender: "user" }]);
-      setInput("");
+    const setText = (e) => {
+      setPrompt(e.target.value)
+    }
+    const handleSend = async() => {
+      if(prompt == '') return 
+      setMessages((prevMessage) =>[
+        ...prevMessage ,
+        { sender: 'user', text: prompt }
+       ])
+       setPrompt('')
+       const result = await getGeminiChat(prompt)
+    
+
+      
+
+       setMessages((prevMessage) =>[
+        ...prevMessage ,
+        { sender: 'Gemini', text: result }
+       ])
+
     };
     useEffect(() => {
       console.log(loginState)
@@ -38,7 +56,16 @@ const MainPage = () => {
         setValid(regex.test(value))
     };
     // emailData가 변경될 때만 email을 업데이트
-    
+    const keyEnter = (e) => {
+      if(e.key =='Enter'){
+        handleSend()
+      }
+    }
+    useEffect(() => {
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, [messages]); // messages가 변경될 때마다 실행
     const sendMail = async() => {
 
      
@@ -57,8 +84,19 @@ const MainPage = () => {
         <BasicLayout>
               <div className=" text-white flex flex-col justify-center items-center  h-[100%]">
      {login ==false ? (
-      <div className="bg-white bg-opacity-80 p-10 rounded-lg shadow-xl w-full sm:w-96" >
-        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
+      <div className="bg-white bg-opacity-80 p-10 rounded-lg shadow-2xl w-full sm:w-96" >
+       <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
+          🎶 구글 Gemini 챗봇 대화하기 🎤
+        </h1>
+
+        <p className="text-lg text-gray-900 mb-6">
+          회원가입하고 로그인하시면 구글 Gemini 챗봇을 이용할 수 있습니다. <br />
+        </p>
+        <p className="text-lg text-gray-900 mb-6">
+          현재 단순한 대화만 가능합니다. <br />
+          추후에 지속적인 업데이트로 부가 기능을 추가할 예정입니다. <br />
+        </p>
+        {/* <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
           🎶 인공지능으로 가수의 목소리로 노래를 부르다 🎤
         </h1>
         <p className="text-lg text-gray-900 mb-6">
@@ -88,43 +126,45 @@ const MainPage = () => {
           >
             출시 알림 받기
           </button>
-        </form>
+        </form> */}
       </div>
  ) :  <div className="flex flex-col items-center justify-center bg-blue-50 w-full h-full">
- <div className=" bg-white shadow-lg rounded-lg p-4 mt-10 ml-96 w-[60%] h-[90%]">
+ <div className="flex flex-col bg-white shadow-lg rounded-lg p-4 mt-2 ml-96 w-[70%] h-[100%]">
    {/* Header */}
-   <div className="text-center font-bold text-lg text-blue-600 mb-4 h-96" >
+   <div className="text-center font-bold text-lg text-blue-600 mb-4 h-auto" >
      AI와 채팅하기 💬
    </div>
 
    {/* Chat Messages */}
-   <div className="overflow-y-auto flex flex-col space-y-2 mb-4 w-auto h-auto">
+   <div className="overflow-auto flex flex-col space-y-2 mb-4 w-full h-full ">
      {messages.map((msg, index) => (
        <div
          key={index}
          className={`${
-           msg.sender === "user" ? "self-end bg-blue-200" : "self-start bg-gray-200"
+           msg.sender === "user" ? "self-end bg-blue-700" : "self-start bg-gray-700"
          } max-w-[70%] p-2 rounded-lg text-sm`}
        >
          {msg.text}
        </div>
      ))}
+     <div ref={messagesEndRef}/>
    </div>
 
    {/* Input Area */}
-   <div className="flex items-center space-x-2 mt-52">
+   <div className="flex items-center space-x-2 mt-2 h-12">
      <input
        type="text"
        className="flex-grow p-2 border border-gray-300 rounded-lg text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
        placeholder="대화를 입력해보세요."
-       value={input}
-       onChange={(e) => setInput(e.target.value)}
+       value={prompt}
+       onInput={setText}
+       onKeyDown={keyEnter}
      />
      <button
        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
        onClick={handleSend}
      >
-       Send
+       보내기
      </button>
    </div>
  </div>
