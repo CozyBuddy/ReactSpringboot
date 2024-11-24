@@ -5,7 +5,7 @@ import { sendmail } from './../api/sendMail';
 import { useRecoilState } from "recoil";
 import signinState from "../atoms/signinState";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { getGeminiChat } from "../api/geminiApi";
+import { GetGeminiChat} from "../api/geminiApi";
 import loading from '../image/duckloading.gif'
 const MainPage = () => {
     const emailData = {
@@ -34,7 +34,7 @@ const MainPage = () => {
         ...prevMessage ,
         { sender: 'Gemini', text: <img src={loading} alt="" className="h-32 w-20 bg-white"/> }
        ])
-       const result = await getGeminiChat(prompt)
+       const result = await GetGeminiChat(prompt,loginState.email)
     
 
        setMessages((prevMessage) =>[
@@ -96,6 +96,7 @@ const MainPage = () => {
 
         <p className="text-lg text-gray-900 mb-6">
           회원가입하고 로그인하시면 구글 Gemini 챗봇을 이용할 수 있습니다. <br />
+         <div className="text-red-500">주의사항! 채팅된 내용은 향후 서비스 개선 목적으로 사용될 수 있으니 주의가 필요합니다.</div> <br />
         </p>
         <p className="text-lg text-gray-900 mb-6">
           현재 단순한 대화만 가능합니다. <br />

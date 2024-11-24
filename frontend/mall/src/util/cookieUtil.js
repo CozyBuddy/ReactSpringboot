@@ -12,6 +12,7 @@ export const getCookie = (name) => {
     return cookies.get(name)
 }
 
-export const removeCookie = (name, path="/") => {
-    cookies.remove(name , {path})
+export const removeCookie = (name) => {
+    cookies.remove(name , {path: '/' })
+    document.cookie = `${name}=; Max-Age=0; path=/;`;
 }
