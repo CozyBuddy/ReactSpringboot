@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { sendmail } from './../api/sendMail';
 import { useRecoilState } from "recoil";
 import signinState from "../atoms/signinState";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { GetGeminiChat} from "../api/geminiApi";
 import loading from '../image/duckloading.gif'
 const MainPage = () => {
@@ -87,7 +86,7 @@ const MainPage = () => {
 
     return (
         <BasicLayout>
-              <div className=" text-white flex justify-center items-center  h-[100%]">
+              <div className=" text-white flex justify-center items-center h-full">
      {login ==false ? (
       <div className="bg-white bg-opacity-80 mt-14 md:mt-0 p-10 rounded-lg shadow-2xl w-full sm:w-96 h-[80%]" >
        <h1 className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
@@ -101,39 +100,10 @@ const MainPage = () => {
         <p className="text-xs md:text-lg text-gray-900 mb-6">
           현재 단순한 대화만 가능합니다. <br />
           추후에 지속적인 업데이트로 부가 기능을 추가할 예정입니다. <br />
-        </p>
-        {/* <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
-          🎶 인공지능으로 가수의 목소리로 노래를 부르다 🎤
-        </h1>
-        <p className="text-lg text-gray-900 mb-6">
-          혁신적인 생성형 AI 기술을 활용하여, 좋아하는 노래를 원하는 가수의 목소리로 들을 수 있는 기회!
-          <br />
-          AI가 여러분의 음악 경험을 새롭게 정의합니다.
-        </p>
-        <p className="text-md text-gray-700 mb-8">
-          곧 출시될 저희의 새로운 서비스, 나만의 가수와 함께하는 음악의 세계로 초대합니다.
-        </p>
-        
-        <form className="w-full">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
-            이메일을 입력하고 알림을 받아보세요!
-          </label>
-          <input
-            type="email"
-            id="email"
-            onChange={insertemail}
-            placeholder="이메일 입력"
-            className="w-full p-3 border border-gray-300 rounded-lg mb-4 text-gray-800"
-          />
-          <button
-            onClick={sendMail}
-            type="button"
-            className="w-full p-3 bg-gradient-to-r from-green-400 to-teal-500 text-white rounded-lg hover:bg-gradient-to-l from-teal-500 to-green-400 transition duration-300"
-          >
-            출시 알림 받기
-          </button>
-        </form> */}
-      </div>
+          </p>
+        </div>
+
+   
  ) :  
 
 <div className="border-2 border-sky-200 mt-5 m-2 p-4 h-full w-full md:w-[80%] overflow-y-auto">
@@ -181,7 +151,7 @@ const MainPage = () => {
 
 </div> 
 </div>
-</div>}
+</div> }
       {/* <div className="mt-12 text-center">
         <h2 className="text-2xl font-semibold mb-4">🎧 서비스 기능 미리보기</h2>
         <div className="flex justify-center space-x-8">
