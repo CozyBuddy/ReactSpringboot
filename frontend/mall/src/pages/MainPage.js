@@ -89,16 +89,16 @@ const MainPage = () => {
         <BasicLayout>
               <div className=" text-white flex justify-center items-center  h-[100%]">
      {login ==false ? (
-      <div className="bg-white bg-opacity-80 mt-14 md:mt-0 p-10 rounded-lg shadow-2xl w-full sm:w-96" >
-       <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
+      <div className="bg-white bg-opacity-80 mt-14 md:mt-0 p-10 rounded-lg shadow-2xl w-full sm:w-96 h-[80%]" >
+       <h1 className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 mb-6">
           🎶 구글 Gemini 챗봇 대화하기 🎤
         </h1>
 
-        <p className="text-lg text-gray-900 mb-6">
+        <p className="text-xs md:text-lg text-gray-900 mb-6">
           회원가입하고 로그인하시면 구글 Gemini 챗봇을 이용할 수 있습니다. <br />
          <div className="text-red-500">주의사항! 채팅된 내용은 향후 서비스 개선 목적으로 사용될 수 있으니 주의가 필요합니다.</div> <br />
         </p>
-        <p className="text-lg text-gray-900 mb-6">
+        <p className="text-xs md:text-lg text-gray-900 mb-6">
           현재 단순한 대화만 가능합니다. <br />
           추후에 지속적인 업데이트로 부가 기능을 추가할 예정입니다. <br />
         </p>
